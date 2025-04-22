@@ -12,6 +12,7 @@ It exposes tools (e.g. `get_portfolio`) that LLM‑powered agents (Cursor, Claud
    - [Cursor](#cursor)
    - [Claude for Desktop](#claude-for-desktop)
 3. [Local Development](#local-development)
+   - [Prerequisites](#prerequisites)
    - [Environment Variables](#environment-variables)
    - [MCP Configuration (`.cursor/mcp.json`)](#mcp-configuration-cursormcpjson)
    - [Building & Running](#building--running)
@@ -40,9 +41,9 @@ It exposes tools (e.g. `get_portfolio`) that LLM‑powered agents (Cursor, Claud
    ```jsonc
    {
      "mcpServers": {
-       "monad": {
+       "monad-tools": {
          "command": "npx",
-         "args": ["-y", "@unsorted-ai/mcp"],
+         "args": ["-y", "@unsorted-ai/mcp@latest"],
          "env": {
            "ALCHEMY_API_KEY": "YOUR_ALCHEMY_API_KEY",
          },
@@ -73,7 +74,7 @@ It exposes tools (e.g. `get_portfolio`) that LLM‑powered agents (Cursor, Claud
    ```jsonc
    {
      "mcpServers": {
-       "monad": {
+       "monad-tools": {
          "command": "node",
          "args": ["./node_modules/@unsorted-ai/mcp/dist/main.js"],
          "env": {
@@ -103,7 +104,7 @@ _For more on Cursor's MCP setup, see "Configuring MCP Servers" in the [Cursor do
    ```jsonc
    {
      "mcpServers": {
-       "monad": {
+       "monad-tools": {
          "command": "npx",
          "args": ["-y", "@unsorted-ai/mcp", "/absolute/path/to/your/project"],
          "env": {
@@ -122,6 +123,11 @@ _For a step‑by‑step Claude guide, see the [MCP quickstart for Claude Desktop
 
 ## Local Development
 
+### Prerequisites
+
+- [Bun](https://bun.sh/) v1+
+- (Optional) npm for some scripts
+
 ### Environment Variables
 
 Copy and configure your Alchemy key:
@@ -138,14 +144,14 @@ ALCHEMY_API_KEY=your-alchemy-api-key-here
 
 ### MCP Configuration (`.cursor/mcp.json`)
 
-For local testing (pointing at your `start:dev` script):
+For local testing (pointing at your development server):
 
 ```jsonc
 {
   "mcpServers": {
-    "monad": {
-      "command": "npm",
-      "args": ["run", "start:dev"],
+    "monad-tools": {
+      "command": "bun",
+      "args": ["dist/main.js"],
       "cwd": ".",
     },
   },
@@ -154,24 +160,37 @@ For local testing (pointing at your `start:dev` script):
 
 ### Building & Running
 
-Install deps and build:
+Install dependencies:
 
 ```bash
-npm install
-npm run build
+bun install
 ```
 
-Start in dev mode (auto‑rebuild & run):
+Build the project:
 
 ```bash
-npm run start:dev
+bun run build
 ```
 
-Or run the compiled server directly:
+Start the development server:
 
 ```bash
-node dist/main.js
+bun start
 ```
+
+### Development Scripts
+
+| Command               | Description                            |
+| --------------------- | -------------------------------------- |
+| `bun run build`       | Compile `src/main.ts` → `dist/main.js` |
+| `bun start`           | Run the development server             |
+| `bun test`            | Run tests                              |
+| `bun run lint`        | Lint source via Biome                  |
+| `bun run format`      | Format source via Biome                |
+| `bun run check`       | Run Biome checks                       |
+| `bun run clean`       | Remove build artifacts                 |
+| `bun run create-tool` | Create a new tool template             |
+| `bun run release`     | Bump version & update CHANGELOG        |
 
 ---
 

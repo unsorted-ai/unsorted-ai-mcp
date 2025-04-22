@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 // Version is automatically updated during release process
-export const VERSION = '0.1.2';
+export const VERSION = '0.1.3';
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -9,7 +9,7 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import { createTools } from "./tools";
+import { createTools } from "./registry";
 
 /* You can remove this section if you don't need to validate command line arguments */
 /* You'll have to handle the error yourself */

@@ -1,8 +1,8 @@
 import type { ToolRegistration } from "@/types";
 import { makeJsonSchema } from "@/utils/makeJsonSchema";
-import type { PortfolioSchema } from "../../portfolio.schema";
-import { getPortfolioSchema } from "../../portfolio.schema";
-import { portfolioService } from "../../portfolio.service";
+import type { PortfolioSchema } from "./portfolio.schema";
+import { getPortfolioSchema } from "./portfolio.schema";
+import { portfolioService } from "./portfolio.service";
 
 export const getPortfolioTool: ToolRegistration<PortfolioSchema> = {
   name: "get_portfolio",
@@ -13,6 +13,7 @@ export const getPortfolioTool: ToolRegistration<PortfolioSchema> = {
       const parsedArgs = getPortfolioSchema.parse(args);
 
       const result = await portfolioService.getPortfolio(parsedArgs);
+      console.log(result);
       return {
         content: [
           {

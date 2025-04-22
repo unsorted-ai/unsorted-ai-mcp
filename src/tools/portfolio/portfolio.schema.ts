@@ -19,7 +19,8 @@ export const alchemyResponseSchema = z.object({
         address: z.string(),
         network: z.string(),
         tokenAddress: z.string().nullable(),
-        tokenBalance: z.string(), // Hex string
+        tokenBalance: z.string(),
+        tokenValueUsd: z.string(),
         tokenMetadata: z
           .object({
             symbol: z.string(),
@@ -43,6 +44,7 @@ export const alchemyResponseSchema = z.object({
   }),
 });
 
+export type AlchemyResponse = z.infer<typeof alchemyResponseSchema>;
 // Schema for the MCP tool response format
 export const getPortfolioResponseSchema = z.object({
   content: z.array(
