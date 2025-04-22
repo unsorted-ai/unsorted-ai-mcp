@@ -106,7 +106,7 @@ _For more on Cursor's MCP setup, see "Configuring MCP Servers" in the [Cursor do
      "mcpServers": {
        "monad-tools": {
          "command": "npx",
-         "args": ["-y", "@unsorted-ai/mcp", "/absolute/path/to/your/project"],
+         "args": ["-y", "@unsorted-ai/mcp@latest"],
          "env": {
            "ALCHEMY_API_KEY": "YOUR_ALCHEMY_API_KEY",
          },
@@ -144,7 +144,7 @@ ALCHEMY_API_KEY=your-alchemy-api-key-here
 
 ### MCP Configuration (`.cursor/mcp.json`)
 
-For local testing (pointing at your development server):
+For local testing:
 
 ```jsonc
 {
@@ -152,7 +152,6 @@ For local testing (pointing at your development server):
     "monad-tools": {
       "command": "bun",
       "args": ["dist/main.js"],
-      "cwd": ".",
     },
   },
 }
@@ -180,17 +179,15 @@ bun start
 
 ### Development Scripts
 
-| Command               | Description                            |
-| --------------------- | -------------------------------------- |
-| `bun run build`       | Compile `src/main.ts` → `dist/main.js` |
-| `bun start`           | Run the development server             |
-| `bun test`            | Run tests                              |
-| `bun run lint`        | Lint source via Biome                  |
-| `bun run format`      | Format source via Biome                |
-| `bun run check`       | Run Biome checks                       |
-| `bun run clean`       | Remove build artifacts                 |
-| `bun run create-tool` | Create a new tool template             |
-| `bun run release`     | Bump version & update CHANGELOG        |
+| Command          | Description                            |
+| ---------------- | -------------------------------------- |
+| `bun run build`  | Compile `src/main.ts` → `dist/main.js` |
+| `bun start`      | Run the development server             |
+| `bun test`       | Run tests                              |
+| `bun run lint`   | Lint source via Biome                  |
+| `bun run format` | Format source via Biome                |
+| `bun run check`  | Run Biome checks                       |
+| `bun run clean`  | Remove build artifacts                 |
 
 ---
 
@@ -198,7 +195,7 @@ bun start
 
 - **get_portfolio**
 
-  - **Description**: Fetch on‑chain token balances for up to 2 wallet addresses.
+  - **Description**: Fetch on‑chain token balances for up to 2 wallet addresses. Modifies alchemy portfolio response to suit LLM use.
   - **Input schema**:
 
     ```json
@@ -211,15 +208,13 @@ bun start
 
 ## Scripts
 
-| Command             | Description                                         |
-| ------------------- | --------------------------------------------------- |
-| `npm run build`     | Compile `src/main.ts` → `dist/main.js`              |
-| `npm run start:dev` | Start server in watch mode (via Bun / Node)         |
-| `npm start`         | Run the built server                                |
-| `npm test`          | Run tests                                           |
-| `npm run lint`      | Lint source via Biome                               |
-| `npm run format`    | Format source via Biome                             |
-| `npm run release`   | Bump version, generate CHANGELOG & update `VERSION` |
+| Command          | Description                            |
+| ---------------- | -------------------------------------- |
+| `bun run build`  | Compile `src/main.ts` → `dist/main.js` |
+| `bun start`      | Run the built server                   |
+| `bun test`       | Run tests                              |
+| `bun run lint`   | Lint source via Biome                  |
+| `npm run format` | Format source via Biome                |
 
 ---
 
