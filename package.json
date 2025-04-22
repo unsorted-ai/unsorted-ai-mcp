@@ -1,6 +1,6 @@
 {
   "name": "@unsorted-ai/mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A MCP server comprising of tools to query the Monad blockchain.",
   "author": {
     "name": "Unsorted AI",
