@@ -1,6 +1,6 @@
 {
   "name": "@unsorted-ai/mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A MCP server comprising of tools to query the Monad blockchain.",
   "author": {
     "name": "Unsorted AI",
@@ -13,7 +13,6 @@
     "type": "git",
     "url": "https://github.com/unsorted-ai/mcp.git"
   },
-  "module": "main.ts",
   "type": "module",
   "bin": {
     "mcp": "dist/main.js"
@@ -28,7 +27,7 @@
   "scripts": {
     "prebuild": "bun scripts/prebuild.ts",
     "build": "bun build ./src/main.ts --outdir dist --target node && chmod +x dist/main.js",
-    "start": "bun run dist/main.js",
+    "start": "bun src/main.ts",
     "test": "bun test",
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run build",
