@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 // Version is automatically updated during release process
-export const VERSION = '0.1.1';
+export const VERSION = '0.1.2';
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
