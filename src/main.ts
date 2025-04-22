@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
 // Version is automatically updated during release process
 export const VERSION = '0.1.1';
@@ -28,14 +28,15 @@ if (args.length < expectedArgs.length) {
 // Initialize server
 const server = new Server(
   {
-    name: "@unsorted-ai/monad-mcp",
-    version: "0.0.1",
+    name: "@unsorted-ai/mcp",
+    version: VERSION,
   },
   {
     capabilities: {
       tools: {
         get_portfolio: "Get the portfolio of a given address.",
       },
+      offerings: {},
     },
   }
 );
